@@ -1,0 +1,18 @@
+RewriteEngine On
+RewriteBase /pay/
+
+# Handle static files, images, and animations
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(_next|animations)/(.*)$ http://localhost:3003/pay/$1/$2 [P,L]
+
+# Handle API requests
+RewriteRule ^api/(.*)$ http://localhost:3003/pay/api/$1 [P,L]
+
+# Proxy requests to Node.js app
+RewriteRule ^(.*)$ http://localhost:3003/pay/$1 [P,L]
+
+# Fallback for client-side routing
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /pay/index.html [L]

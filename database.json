@@ -1,0 +1,10 @@
+{
+  "users": [
+    {
+      "username": "Admin",
+      "password": "Admin1234"
+    }
+  ],
+  "visitors": [],
+  "inputs": []
+}
